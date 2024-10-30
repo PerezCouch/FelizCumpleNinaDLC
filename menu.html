@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NINA - Efecto de Fuentes</title>
+    <title>NINA</title>
     <style>
-
-        /* Importar las fuentes Vanessa Loves y Love Trust */
         @font-face {
             font-family: 'Vanessa Loves';
             src: url('vanessalovesyou.ttf') format('truetype');
@@ -85,16 +83,16 @@
             display: none;
             align-items: center;
             text-align: center;
-            margin-top: 20px; /* Espacio entre la imagen y la sección de frases */
+            margin-top: 20px;
         }
 
         .balloon {
-            background-color: #e7edff; /* Color del globo */
-            padding: 20px 40px; /* Espaciado dentro del globo */
-            border-radius: 20px; /* Bordes redondeados */
+            background-color: #e7edff;
+            padding: 20px 40px;
+            border-radius: 20px;
             position: relative;
-            display: inline-block; /* Asegura que se ajuste al contenido */
-            margin-bottom: 10px; /* Espacio entre el globo y la imagen */
+            display: inline-block;
+            margin-bottom: 10px;
             max-width: 450px;
             min-width: 450px;
             max-height: 50px;
@@ -102,18 +100,18 @@
         }
 
         .balloon-text {
-            font-size: 24px; /* Aumenta el tamaño del texto */
-            color: #333; /* Color del texto */
-            text-align: center; /* Centrar el texto */
+            font-size: 24px;
+            color: #333;
+            text-align: center;
         }
 
         #quoteImage {
-            cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
-            width: 150px; /* Ajusta el tamaño de la imagen */
+            cursor: pointer;
+            width: 150px;
             height: auto;
         }
 
-        #texto{
+        #texto {
             margin: 2%;
             margin-left: 15%;
             margin-right: 5%;
@@ -122,51 +120,55 @@
             font-size: 18px;
             font-family: 'Vanessa Loves', Arial, sans-serif;
         }
-        #triangulo{
+
+        #triangulo {
             width: 50px;
             margin-top: -20px;
         }
-        #fotos{
+
+        #fotos {
             display: flex;
             width: 500px;
             height: 600px;
             margin-right: 200px;
         }
-        #contenedor{
+
+        #contenedor {
             display: flex;
             align-items: center;
             text-align: center;
         }
-        #imagen3{
+
+        #imagen3 {
             margin: 20px;
             width: 350px;
             align-items: center;
             margin-left: 18%;
         }
+
+        #texto4, #texto5 {
+            font-size: 20px;
+            font-family: 'Love Trust', cursive;
+            margin-left: 15%;
+        }
+
         #texto3{
             font-size: 20px;
             font-family: 'Love Trust', cursive;
         }
-        #imagen4{
+
+
+        #imagen4 {
             margin: 20px;
             width: 350px;
             align-items: center;
         }
-        #texto4{
-            font-size: 20px;
-            margin-left: 18%;
-            font-family: 'Love Trust', cursive;
-        }
-        #texto5{
-            font-size: 20px;
-            margin-bottom: 10px;
-            margin-left: 18%;
-            font-family: 'Love Trust', cursive;
-        }
-        #gif{
+
+        #gif {
             width: 400px;
         }
-        #contenedorgato{
+
+        #contenedorgato {
             background-color: #b9c8fa;
             margin: 20px;
             margin-left: 18%;
@@ -174,18 +176,66 @@
             padding: 30px;
             border-radius: 20px;
         }
-        #liston{
+
+        #liston {
             background-color: rgb(221, 17, 17);
             height: 30px;
             width: 20000px;
         }
-        #startButton{
+
+        #startButton {
             margin-top: -50px;
         }
-        #banda{
+
+        #banda {
             width: 800px;
             margin-bottom: -100px;
             margin-top: -70px;
+        }
+
+        /* Media Query para pantallas pequeñas */
+        @media (max-width: 768px) {
+            .container, #contenedorgato {
+                margin: 2%;
+                margin-left: 5%;
+                margin-right: 5%;
+            }
+
+            .name {
+                font-size: 50px;
+                letter-spacing: 5px;
+                height: 80px;
+            }
+
+            .balloon {
+                max-width: 300px;
+                min-width: 300px;
+            }
+
+            #texto {
+                font-size: 14px;
+                margin: 5%;
+            }
+
+            #fotos, #imagen3, #imagen4 {
+                width: 250px;
+                height: auto;
+                margin: 5px;
+            }
+
+            #contenedor {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #gif, #banda {
+                width: 100%;
+            }
+
+            .quote-section {
+                padding: 10px;
+                font-size: 18px;
+            }
         }
     </style>
 </head>
