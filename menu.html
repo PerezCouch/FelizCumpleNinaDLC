@@ -268,7 +268,6 @@
             }
 
             #messageModal {
-                display: none; /* Oculto por defecto */
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -279,15 +278,14 @@
                 align-items: center;
                 justify-content: center;
                 z-index: 1000;
+                display: none;
             }
 
             /* Estilos para la "carta" */
             #messageCard {
-                background-color: white;
-                padding: 20px;
                 border-radius: 10px;
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-                width: 300px;
+                width: 600px;
                 text-align: center;
             }
 
@@ -345,14 +343,10 @@
     <img id="startButton" src="liston.png" style="cursor: pointer;">
 </div>
 
-<div id="messageModal">
-    <div id="messageCard">
-        <h2>Mensaje</h2>
-        <p>Pagina en Mantenimiento.</p>
-    </div>
-</div>
-
 <div class="container" id="content">
+    <div id="messageModal">
+        <img id="messageCard" src="carta mrtnz.png">
+    </div>
     <div id="notification">
         <div id="icon">
             <img src="wsp.png" alt="WhatsApp" />
@@ -519,9 +513,15 @@
     window.onload = () => {
         document.getElementById('background-music').pause(); // Pausar la música al cargar la página
     };
-
     document.getElementById('readMessageButton').addEventListener('click', function() {
     document.getElementById('messageModal').style.display = 'flex';
+});
+
+// Cerrar el modal al hacer clic fuera del contenido de la carta
+document.getElementById('messageModal').addEventListener('click', function(event) {
+    if (event.target === document.getElementById('messageModal')) {
+        document.getElementById('messageModal').style.display = 'none';
+    }
 });
 </script>
 
