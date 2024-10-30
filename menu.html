@@ -193,6 +193,104 @@
             margin-top: -70px;
         }
 
+        #notification {
+                position: fixed;
+                top: 0;
+                width: 100%;
+                max-width: 400px;
+                background-color: rgba(255, 255, 255, 0.9); /* Fondo translúcido */
+                color: black;
+                padding: 10px;
+                align-items: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                margin: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 14px;
+            }
+            #icon{
+                display: flex;
+            }
+
+            #icon img {
+                width: 30px;
+                height: 30px;
+                border-radius: 5px;
+                margin-right: 10px;
+                margin-top: -8px;
+            }
+
+            #content {
+                flex: 1;
+            }
+
+            .title {
+                font-weight: bold;
+                color: #075e54; /* Color verde oscuro similar al de WhatsApp */
+                display: block;
+            }
+
+            .message {
+                display: block;
+                color: black;
+            }
+
+            .time {
+                font-size: 12px;
+                color: #075e54;
+            }
+            #ahora{
+                margin-left: 60%;
+            }
+
+            #readMessageButton {
+                background-color: #25D366; /* Verde de WhatsApp */
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 8px 16px;
+                font-size: 12px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 10px;
+                display: block;
+                align-items: center;
+                margin-left: 70%;
+            }
+
+            #readMessageButton:hover {
+                background-color: #1EBE5A; /* Un tono más oscuro de verde al pasar el ratón */
+            }
+
+            #readMessageButton:active {
+                background-color: #128C7E; /* Color de WhatsApp más oscuro al hacer clic */
+            }
+
+            #messageModal {
+                display: none; /* Oculto por defecto */
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            }
+
+            /* Estilos para la "carta" */
+            #messageCard {
+                background-color: white;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+                width: 300px;
+                text-align: center;
+            }
+
         /* Media Query para pantallas pequeñas */
         @media (max-width: 1500px) {
             .container, #contenedorgato {
@@ -247,7 +345,25 @@
     <img id="startButton" src="liston.png" style="cursor: pointer;">
 </div>
 
+<div id="messageModal">
+    <div id="messageCard">
+        <h2>Mensaje</h2>
+        <p>Pagina en Mantenimiento.</p>
+    </div>
+</div>
+
 <div class="container" id="content">
+    <div id="notification">
+        <div id="icon">
+            <img src="wsp.png" alt="WhatsApp" />
+            <span class="title">WHATSAPP</span>
+            <span class="time" id="ahora">ahora</span>
+        </div>
+        <div id="content">
+            <span class="message">Tinguiris Tingis ❤️ te ha enviado un mensaje</span>
+        </div>
+        <button id="readMessageButton">Leer mensaje</button>
+    </div>
     <br><br><br><br><br>
     <div class="name" id="name"></div>
     <div id="contenedor">
@@ -281,7 +397,7 @@
         <img id="imagen4" src="imagen4.png">
     </div>
     <div id="contenedor">
-        <img id="imagen3" src="Imagen5.png">
+        <img id="imagen3" src="imagen5.png">
         <p id="texto3">Si recordar es revivir lo que fue,<br>
             por qué es tan difícil dejarte ir de una vez?<br>
             Cada canción, cada lugar, cada instante,<br>
@@ -403,6 +519,10 @@
     window.onload = () => {
         document.getElementById('background-music').pause(); // Pausar la música al cargar la página
     };
+
+    document.getElementById('readMessageButton').addEventListener('click', function() {
+    document.getElementById('messageModal').style.display = 'flex';
+});
 </script>
 
 </body>
