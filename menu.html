@@ -31,7 +31,7 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            background-color: #7940d6;
+            background-color: #271c81;
             color: white;
             text-align: center;
             transition: opacity 3s ease;
@@ -267,6 +267,21 @@
                 background-color: #128C7E; /* Color de WhatsApp más oscuro al hacer clic */
             }
 
+            #messagecartas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                display: none;
+            }
+
+
             #messageModal {
                 position: fixed;
                 top: 0;
@@ -287,6 +302,62 @@
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
                 width: 600px;
                 text-align: center;
+            }
+
+            /* Estilos para la "carta" */
+            #messageCard2 {
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+                width: 600px;
+                text-align: center;
+            }
+
+            #botonneko{
+                align-items: center;
+                display: block;
+                font-size: 20px;
+                background-color: #b9c8fa;
+                margin: 20px;
+                border-radius: 10px;
+                border: none;
+                margin-left: 40.5%;
+                padding: 10px;
+            }
+
+            #botonneko:hover {
+                background-color: #a3b2e6; /* Un tono más oscuro de verde al pasar el ratón */
+            }
+
+            #botonneko:active {
+                background-color: #7984aa; /* Color de WhatsApp más oscuro al hacer clic */
+            }
+
+            #botoncarta {
+                margin: 0 10px;
+                padding: 8px 16px;
+                font-size: 16px;
+                border-radius: 10px;
+                background-color: #7d2dc9;
+                border: none;
+                color: white;
+            }
+
+            #botoncarta:hover {
+                background-color: #6526a0; /* Un tono más oscuro de verde al pasar el ratón */
+            }
+
+            #botoncarta:active {
+                background-color: #30134b; /* Color de WhatsApp más oscuro al hacer clic */
+            }
+            .button-container {
+                margin-top: 10px;
+                display: flex;
+            }
+
+            #nekoContainer {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
         /* Media Query para pantallas pequeñas */
@@ -338,6 +409,13 @@
                 width: 50%;
                 text-align: center;
             }
+
+            #messageCard2 {
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+                width: 50%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -352,6 +430,15 @@
 <div class="container" id="content">
     <div id="messageModal">
         <img id="messageCard" src="carta mrtnz.png">
+    </div>
+    <div id="messagecartas">
+        <div id="nekoContainer">
+            <img id="messageCard2" src="1.png">
+            <div class="button-container">
+                <button onclick="previousImage()" id="botoncarta">Anterior</button>
+                <button onclick="nextImage()" id="botoncarta">Siguiente</button>
+            </div>
+        </div>
     </div>
     <div id="notification">
         <div id="icon">
@@ -409,6 +496,7 @@
         <img id="imagen4" src="imagen6.jpg">
     </div>
         <img id="gif" src="0001-0100-unscreen.gif">
+        <button id="botonneko">Tengo algo que decirte</button>
 
         <div id="contenedorgato">
             <div class="quote-section" id="quoteSection">
@@ -467,6 +555,36 @@
 
     const nameContainer = document.getElementById('name');
 
+
+    // Índice actual de la imagen
+    let currentImageIndex = 1;
+    const maxImageIndex = 3;
+
+    // Cambiar a la imagen siguiente
+    function nextImage() {
+        currentImageIndex++;
+        if (currentImageIndex > maxImageIndex) {
+            currentImageIndex = 1; // Volver a la primera imagen si excede el máximo
+        }
+        updateImage();
+    }
+
+    // Cambiar a la imagen anterior
+    function previousImage() {
+        currentImageIndex--;
+        if (currentImageIndex < 1) {
+            currentImageIndex = maxImageIndex; // Volver a la última imagen si es menor a la primera
+        }
+        updateImage();
+    }
+
+    // Actualizar la imagen actual
+    function updateImage() {
+        const image = document.getElementById('messageCard2');
+        image.src = currentImageIndex + '.png';
+    }
+
+
     // Crear y mostrar cada letra con una fuente aleatoria
     nameText.split('').forEach((letter, index) => {
         const letterSpan = document.createElement('span');
@@ -521,12 +639,23 @@
     };
     document.getElementById('readMessageButton').addEventListener('click', function() {
     document.getElementById('messageModal').style.display = 'flex';
-});
+    });
+
+    document.getElementById('botonneko').addEventListener('click', function() {
+    document.getElementById('messagecartas').style.display = 'flex';
+    });
 
 // Cerrar el modal al hacer clic fuera del contenido de la carta
 document.getElementById('messageModal').addEventListener('click', function(event) {
     if (event.target === document.getElementById('messageModal')) {
         document.getElementById('messageModal').style.display = 'none';
+    }
+});
+
+// Cerrar la carta al hacer clic fuera del contenido de la carta
+document.getElementById('messagecartas').addEventListener('click', function(event) {
+    if (event.target === document.getElementById('messagecartas')) {
+        document.getElementById('messagecartas').style.display = 'none';
     }
 });
 </script>
