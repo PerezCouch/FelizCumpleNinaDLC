@@ -316,20 +316,12 @@
                 align-items: center;
                 display: block;
                 font-size: 20px;
-                background-color: #b9c8fa;
+                background-color: #ee5757;
                 margin: 20px;
                 border-radius: 10px;
                 border: none;
-                margin-left: 40.5%;
+                margin-left: 45.5%;
                 padding: 10px;
-            }
-
-            #botonneko:hover {
-                background-color: #a3b2e6; /* Un tono más oscuro de verde al pasar el ratón */
-            }
-
-            #botonneko:active {
-                background-color: #7984aa; /* Color de WhatsApp más oscuro al hacer clic */
             }
 
             #botoncarta {
@@ -496,7 +488,7 @@
         <img id="imagen4" src="imagen6.jpg">
     </div>
         <img id="gif" src="0001-0100-unscreen.gif">
-        <button id="botonneko">Tengo algo que decirte</button>
+        <button id="botonneko">Clickeame</button>
 
         <div id="contenedorgato">
             <div class="quote-section" id="quoteSection">
@@ -523,6 +515,20 @@
 
 
 <script>
+
+    const colorButton = document.getElementById("botonneko");
+    let isOriginalColor = true; // Variable para alternar el color
+
+    function toggleColor() {
+        if (isOriginalColor) {
+            colorButton.style.backgroundColor = "white"; // Cambia a blanco
+        } else {
+            colorButton.style.backgroundColor = ""; // Vuelve al color original
+        }
+        isOriginalColor = !isOriginalColor; // Alterna el estado del color
+    }
+    setInterval(toggleColor, 100);
+
     const nameText = "NINA";
     const fonts = [
         "'Courier New', Courier, monospace",
@@ -550,9 +556,7 @@
         "Pasear a eumi y kunimi juntos siempre fue un sueño para mi",
         "Ojala algun dia me perdones por todo",
         "Los apodos q me ponias nunca los podre borrar de mi cabeza",
-        "eumiii >>> kunimizzz",
-        "quisiera tener una excusa para poder volver a verte seguido",
-        "aunque sea como amigos o algo mas"
+        "eumiii >>> kunimizzz"
     ];
 
     const nameContainer = document.getElementById('name');
